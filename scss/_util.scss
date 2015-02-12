@@ -250,8 +250,11 @@
   border-color: $button-dark-border;
 }
 
-[collection-repeat] {
+[collection-repeat]:not(.collection-compute-element) {
   /* Position is set by transforms */
   left: 0 !important;
   position: absolute !important;
+}
+.collection-repeat-container {
+  position: relative;
 }
