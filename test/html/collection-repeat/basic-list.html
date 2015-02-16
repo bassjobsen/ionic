@@ -8,6 +8,7 @@
 
     <link  href="/dist/css/ionic.css" rel="stylesheet">
     <script src="/dist/js/ionic.bundle.js"></script>
+    <script src="stats.js"></script>
   </head>
 
   <body ng-controller="MainCtrl">
@@ -21,13 +22,7 @@
         </ion-item>
       </ion-list>
     </ion-content>
-    <div id="stats" style="pointer-events: none; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: rgba(0,0,0,0.25); color: white;">
-    </div>
   <script>
-var stats = document.getElementById('stats');
-setInterval(function() {
-  stats.innerHTML = outputTimes();
-}, 750);
 angular.module('ionic').controller('MainCtrl',MainCtrl)
 function MainCtrl($scope, $ionicScrollDelegate, $timeout, $q, $ionicLoading, $ionicModal) {
   $scope.items = [];
