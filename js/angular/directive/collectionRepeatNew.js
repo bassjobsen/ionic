@@ -57,7 +57,7 @@ function CollectionRepeatDirective($ionicCollectionManager, $parse, $window, $$r
       } else {
         heightData.computed = true;
       }
-      if (!attr.collectionItemWidth) attr.collectionItemWidth = '100%';
+      if (!attr.collectionItemWidth) attr.collectionItemWidth = '"100%"';
       parseDimensionAttr(attr.collectionItemWidth, widthData);
     }
 
@@ -65,6 +65,7 @@ function CollectionRepeatDirective($ionicCollectionManager, $parse, $window, $$r
     ionic.on('resize', validateResize, window);
 
 
+    scope.$on('$destroy', function() {
       computedStyleNode && computedStyleNode.parentNode &&
         computedStyleNode.parentNode.removeChild(computedStyleNode);
       computedStyleScope && computedStyleScope.$destroy();
@@ -154,7 +155,7 @@ function CollectionRepeatDirective($ionicCollectionManager, $parse, $window, $$r
           function widthGetter(scope, locals) {
             var result = parsedValue(scope, locals);
             if (result.charAt && result.charAt(result.length - 1) === '%')
-              return Math.floor(parseInt(result) / 100 * scrollView.clientWidth);
+              return Math.floor(parseInt(result) / 100 * scrollView.__clientWidth);
             return parseInt(result);
           };
       }
@@ -213,7 +214,7 @@ function RepeatManagerFactory($rootScope, $window) {
       return widthFn(scope, getterLocals);
     };
 
-    var isGridView = widthData.attrValue !== '100%';
+    var isGridView = widthData.attrValue !== '"100%"';
     var isStaticView = !heightData.dynamic && !widthData.dynamic;
 
     var estimatedHeight;

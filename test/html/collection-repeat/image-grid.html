@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="ionic">
   <head>
@@ -12,13 +13,7 @@
 
   <body ng-controller="MainCtrl">
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Hi</h1>
-      <a class="button" ng-click="scrollBottom(true)">
-        Bottom
-      </a>
-      <!-- <a class="button" ng-click="openModal()"> -->
-      <!--   MODAL -->
-      <!-- </a> -->
+      <h1 class="title">Image Grid: Dynamic Height</h1>
     </ion-header-bar>
     <ion-content>
       <ion-refresher on-refresh="loadMore()"></ion-refresher>
@@ -27,9 +22,9 @@
         <ion-item
           class="item item-avatar"
           collection-repeat="item in items"
-          collection-item-height="($index%20)+75"
+          collection-item-height="8*($index%10)+75"
           collection-item-width="'50%'">
-            <img ng-src="http://lorempixel.com/90/{{90+($index%2)}}">
+            <img ng-src="http://lorempixel.com/90/{{90+($index%10)}}">
             <h2>{{item.text}}</h2>
             <p>
             <i ng-if="($index%3)==0" class="icon ion-home"></i>
