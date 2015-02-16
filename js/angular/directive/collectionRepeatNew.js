@@ -64,7 +64,7 @@ function CollectionRepeatDirective($ionicCollectionManager, $parse, $window, $$r
     scrollCtrl.$element.one('scroll.init', refreshDimensions);
     ionic.on('resize', validateResize, window);
 
-    scope.$on('$destroy', function() {
+
       computedStyleNode && computedStyleNode.parentNode &&
         computedStyleNode.parentNode.removeChild(computedStyleNode);
       computedStyleScope && computedStyleScope.$destroy();

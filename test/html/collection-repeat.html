@@ -29,7 +29,7 @@
           collection-repeat="item in items"
           collection-item-height="($index%20)+75"
           collection-item-width="'50%'">
-            <img ng-src="http://lorempixel.com/90/{{90+($index%5)}}">
+            <img ng-src="http://lorempixel.com/90/{{90+($index%2)}}">
             <h2>{{item.text}}</h2>
             <p>
             <i ng-if="($index%3)==0" class="icon ion-home"></i>
