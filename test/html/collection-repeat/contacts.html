@@ -13,19 +13,16 @@
 <body ng-controller="MainCtrl">
   <ion-header-bar class="bar-positive">
     <h1 class="title">3000 Contacts</h1>
-    <div class="button" ng-click="scrollBottom()">
-      Scroll Bottom
-    </div>
+    <!-- <div class="button" ng-click="scrollBottom()"> -->
+    <!--   Scroll Bottom -->
+    <!-- </div> -->
   </ion-header-bar>
   <ion-content>
     <div class="list">
-      <a class="item item-avatar"
-        collection-repeat="item in getContacts()"
-        collection-item-height="item.isLetter ? 40 : 75"
-        ng-class="{'item-divider': item.isLetter}">
-        <img ng-if="!item.isLetter" ng-src="http://lorempixel.com/60/{{55 + ($index % 10)}}">
-        <h2>{{item.letter || (item.first_name+' '+item.last_name)}}</h2>
-        <p>{{item.email}}</p>
+      <a class="item item-avatar" collection-repeat="item in contacts">
+        <img src="http://lorempixel.com/60/60?q={{$index % 20}}">
+        <h2>{{item.first_name+' '+item.last_name}}</h2>
+        <p>{{$index}}</p>
       </a>
     </div>
   </ion-content>
@@ -33,7 +30,7 @@
 angular.module('contactsApp', ['ionic'])
 .controller('MainCtrl', function($scope, $ionicScrollDelegate, filterFilter) {
   var letters = $scope.letters = [];
-  var contacts = $scope.contacts = [];
+  var contacts = $scope.contacts = window.CONTACTS;
   var currentCharCode = 'A'.charCodeAt(0) - 1;
 
   //window.CONTACTS is imported from contacts.js
